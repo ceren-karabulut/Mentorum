@@ -1,0 +1,71 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar color="danger">
+    <ion-buttons slot="primary">
+      <ion-button (click)="openPage()" >
+        <ion-icon slot="icon-only" name="open"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+    <ion-title>
+      Mentorum
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<form [formGroup]="mentorForm" (ngSubmit)="CreateRecord()" size="small">
+
+  <ion-item>
+    <ion-label position="floating">Ad Soyad</ion-label>
+    <ion-input formControlName="Name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Bölüm</ion-label>
+    <ion-input formControlName="Section"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Universite</ion-label>
+    <ion-input formControlName="University"></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-label position="floating">Mezuniyet Yılı</ion-label>
+    <ion-input formControlName="GraduateYear"></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-label position="floating">İş Pozisyonu (Varsa)</ion-label>
+    <ion-input formControlName="Work"></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-label position="floating">EMail</ion-label>
+    <ion-input formControlName="Mail"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-button (click)="CreateRecord()" [disabled]="mentorForm.invalid" color="success" >
+      <ion-icon size="medium" slot="icon-only" name="add" ></ion-icon>
+      &nbsp;Mentor Ekle
+    </ion-button>
+  </ion-item>
+
+</form>
+<ion-content [fullscreen]="true" class="ion-padding">
+
+
+   <ion-card *ngFor="let item of mentorList" color="light">
+      <ion-card-header>
+        <ion-card-title>{{item.Name}} </ion-card-title>
+        <ion-card-subtitle>{{item.Section}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+      <p>{{item.University}}<p>
+      <p>{{item.Mail}}</p>
+      <p>Mezuniyet Tarihi:{{item.GraduateYear}}</p>
+      <p>{{item.Work}}</p>
+      </ion-card-content>
+
+
+
